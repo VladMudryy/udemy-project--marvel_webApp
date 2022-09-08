@@ -88,7 +88,16 @@ const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki} = char;
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-        imgStyle = {'objectFit' : 'contain'};
+        imgStyle = {'objectFit' : 'fill'};
+    }
+
+    let visibleDescription = '';
+    if (description.length > 100) {
+        visibleDescription = `${description.slice(0, 100)}...`;
+    } else if (description.length === 0) {
+        visibleDescription = `There is no description for this character. Please visit website or wiki.`
+    } else {
+        visibleDescription = description
     }
 
     return (
@@ -97,7 +106,7 @@ const View = ({char}) => {
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>
                 <p className="randomchar__descr">
-                    {description}
+                    {visibleDescription}
                 </p>
                 <div className="randomchar__btns">
                     <a href={homepage} className="button button__main">

@@ -85,7 +85,16 @@ const View = ({char}) => {
 
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-        imgStyle = {'objectFit' : 'contain'};
+        imgStyle = {'objectFit' : 'fill'};
+    }
+
+    let visibleDescription = '';
+    if (description.length > 100) {
+        visibleDescription = `${description.slice(0, 100)}...`;
+    } else if (description.length === 0) {
+        visibleDescription = `There is no description for this character. Please visit website or wiki.`
+    } else {
+        visibleDescription = description
     }
 
     return (
@@ -105,7 +114,7 @@ const View = ({char}) => {
                 </div>
             </div>
             <div className="char__descr">
-                {description}
+                {visibleDescription}
             </div>
             <div className="char__comics">Comics:</div>
             <ul className="char__comics-list">
