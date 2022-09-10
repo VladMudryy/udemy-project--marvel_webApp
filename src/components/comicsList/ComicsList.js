@@ -1,21 +1,40 @@
 import { useState, useEffect } from 'react';
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
 import useMarvelService from '../../services/MarvelService';
+
 
 import './comicsList.scss';
 
 const ComicsList = () => {
     const [comicsList, setComicsList] = useState([]);
+    const [offset, setOffset] = useState(45);
+    const [newItemLoading, setNewItemLoading] = useState(false);
+    const [comicsEnded, setComicsEnded] = useState(false);
 
     const {loading, error, getAllComics, clearError} = useMarvelService();
 
     useEffect(() => {
-        onRequest();
+        onRequest(offset, true);
     }, [])
 
-    const onRequest = () => {
-        getAllComics()
-            .then(res => setComicsList(state => [...state, ...res]))
+    const onRequest = (offset, initial) => {
+        initial ? setNewItemLoading(false) : setNewItemLoading(true);
+        getAllComics(offset)
+            .then(onComicsLoaded)
+    }
+
+    const onComicsLoaded = (res) => {
+        let ended = false;
+        if (res.length < 8) {
+            ended = true;
+        }
+
+        setComicsList(state => [...state, ...res])
+        setOffset(offset => offset + 8);
+        setNewItemLoading(false);
+        setComicsEnded(ended);
     }
 
     const renderComics = () => {
@@ -40,10 +59,18 @@ const ComicsList = () => {
 
     const items = renderComics(comicsList);
 
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading && !newItemLoading ? <Spinner/> : null;
+
     return (
         <div className="comics__list">
+            {errorMessage}
+            {spinner}
             {items}
-            <button className="button button__main button__long">
+            <button className="button button__main button__long"
+                    disabled={newItemLoading}
+                    onClick={() => onRequest(offset)}
+                    style={{'display': comicsEnded ? 'none' : 'block'}}>
                 <div className="inner">load more</div>
             </button>
         </div>
