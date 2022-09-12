@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAGK,AAAD,YAAS,CAAC;EACN,KAAK,EAAE,IAAI;EACX,gBAAgB,ECJjB,OAAO;EDKN,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,aAAa;EACtB,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,gBAAgB;CAS1C;;AARI,AAAD,iBAAM,CAAC;EACH,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,KAAK,EAAE,OAAO;EACd,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAI;CACpB",
+    "sources": [
+        "appBanner.scss",
+        "../../style/variables.scss"
+    ],
+    "names": [],
+    "file": "appBanner.css"
+}

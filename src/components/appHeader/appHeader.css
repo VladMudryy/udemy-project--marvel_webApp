@@ -1,0 +1,39 @@
+.app__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.app__title {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+}
+
+.app__title span {
+  color: #9F0013;
+}
+
+.app__menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.app__menu ul li {
+  margin: 0 8px;
+}
+
+.app__menu ul li a:hover {
+  color: #9F0013;
+}
+/*# sourceMappingURL=appHeader.css.map */
