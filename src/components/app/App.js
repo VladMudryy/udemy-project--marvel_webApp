@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import {MainPage, ComicsPage} from "../pages";
+import {MainPage, ComicsPage, SingleComicPage, Page404} from "../pages";
 import AppHeader from "../appHeader/AppHeader";
 
 const App = () => {
